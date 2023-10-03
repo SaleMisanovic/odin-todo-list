@@ -29,13 +29,21 @@ a{
 .project{
     font-size: larger;
 }
-.home{
+.home, .notes{
     text-decoration: underline;
 }
 
 .content{
     background-color: #f5f5f5;
 }
-p{
+
+.project-item{
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr 1fr;
+}
+
+footer>p{
     background-color: #ffffff;
+    margin:0 ;
+    text-align: center;
 }

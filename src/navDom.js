@@ -1,3 +1,5 @@
+import {renderItems} from "./index.js"
+
 const navList = document.querySelector("ul");
 
 const navDom = () => {
@@ -9,8 +11,10 @@ const navDom = () => {
   navProject.appendChild(navProjectName);
   navProjectName.innerText = "Home";
   navProjectName.classList.add("project")
-  navProjectName.classList.add("home")
-
+  navProjectName.classList.add("home");
+  navProjectName.addEventListener("click",function () {
+    renderItems("home")
+  });
 };
 
 const navDomProjects = (project)=>{
@@ -20,7 +24,10 @@ const navDomProjects = (project)=>{
     const navProjectName = document.createElement("a");
     navProject.appendChild(navProjectName);
     navProjectName.innerText = `${project.name}`;
-    navProjectName.classList.add("project")
+    navProjectName.classList.add("project");
+    navProjectName.addEventListener("click",function () {
+      renderItems(`${project.name}`)
+    });    
 }
 
 const navDomNotes = () => {
