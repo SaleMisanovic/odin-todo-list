@@ -7,6 +7,7 @@ body{
 
 header{
     background-color: #3498db;
+    margin-top: 10%;
 }
 h1{
     padding: 0.5em 2em;
@@ -25,6 +26,7 @@ li{
 a{
     color: white;
     text-decoration: none;
+    cursor: pointer;
 }
 .project{
     font-size: larger;
@@ -39,11 +41,34 @@ a{
 
 .project-item{
     display: grid;
-    grid-template-columns: 2fr 3fr 2fr 1fr;
+    grid-template-columns: 2fr 3fr 2fr 1fr 1fr;
 }
 
 footer>p{
     background-color: #ffffff;
     margin:0 ;
     text-align: center;
+}
+
+.pop-ups{
+    display: block;
+    position:absolute;
+    top:50%;
+    left:50%;
+}
+
+.note-new-box{
+    display: none;
+    position: fixed;
+    margin: 0 auto;
+    text-align: center;
+    background-color: lightblue;
+}
+
+.project-new-box{
+    visibility: hidden;
+}
+
+.item-new-box{
+    visibility: hidden;
 }

@@ -1,4 +1,5 @@
 import {renderItems} from "./index.js"
+import { addProjectNew } from "./index.js";
 
 const navList = document.querySelector("ul");
 
@@ -30,6 +31,19 @@ const navDomProjects = (project)=>{
     });    
 }
 
+const navDomProjectNew = ()=>{
+  const navProjectNew = document.createElement("li");
+  navList.appendChild(navProjectNew);
+
+  const navProjecNewButton = document.createElement("a");
+  navProjectNew.appendChild(navProjecNewButton);
+  navProjecNewButton.innerText = "Add New Project +";
+  navProjecNewButton.classList.add("project");
+  navProjecNewButton.addEventListener("click",function () {
+    addProjectNew();
+  })
+} 
+
 const navDomNotes = () => {
     const navProject = document.createElement("li");
     navList.appendChild(navProject);
@@ -39,9 +53,13 @@ const navDomNotes = () => {
     navProjectName.innerText = "Notes";
     navProjectName.classList.add("project")
     navProjectName.classList.add("notes")
+    navProjectName.addEventListener("click",function () {
+      renderItems("notes")
+    });    
   
   };
 
+export {navDomProjectNew};
 export {navDom};
 export {navDomProjects};
 export {navDomNotes};

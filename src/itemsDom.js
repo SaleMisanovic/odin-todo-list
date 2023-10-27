@@ -1,3 +1,5 @@
+import {addNewItem, addNewNote, changeStatus} from "./index.js"
+
 const content = document.querySelector(".content");
 
 
@@ -27,7 +29,62 @@ const itemsDomAll = (item) =>{
     projectItemPriority.innerText = `${item.priority}` ;
     projectItem.appendChild(projectItemPriority);
 
+    const projectItemChecked = document.createElement("input");
+    projectItemChecked.type = "checkbox";
+    projectItemChecked.checked = item.checked;
+    projectItemChecked.addEventListener("click",function() {
+        changeStatus(item);
+    })
+
+    projectItem.appendChild(projectItemChecked);
+
+
 };
 
+const itemsDomAdd = () =>{
+    const itemNew = document.createElement("div");
+    content.appendChild(itemNew);
+    itemNew.classList.add("item-new");
+
+    const itemNewButton = document.createElement("button");
+    itemNew.appendChild(itemNewButton);
+    itemNewButton.innerText = "Add New Item";
+    itemNewButton.addEventListener("click", function () {
+        addNewItem();
+    })
+}
+
+const notesDomAll = (note) =>{
+
+    const noteItem = document.createElement("div");
+    content.appendChild(noteItem);
+    noteItem.classList.add("note-item") 
+
+    const noteItemName = document.createElement("div");
+    noteItemName.innerText = `${note.name}`;
+    noteItem.appendChild(noteItemName);
+
+    const noteItemDesc = document.createElement("div");
+    noteItemDesc.innerText = `${note.description}`;
+    noteItem.appendChild(noteItemDesc);
+
+};
+
+const notesDomAdd = () =>{
+    const noteNew = document.createElement("div");
+    content.appendChild(noteNew);
+    noteNew.classList.add("note-new");
+
+    const noteNewButton = document.createElement("button");
+    noteNew.appendChild(noteNewButton);
+    noteNewButton.innerText = "Add New Note";
+    noteNewButton.addEventListener("click",function () {
+        addNewNote();
+    })
+}
+
+export {itemsDomAdd};
+export {notesDomAdd};
+export {notesDomAll};
 export {itemsDomAll};
 export {clearDomItems};
