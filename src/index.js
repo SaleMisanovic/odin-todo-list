@@ -7,6 +7,11 @@ import Item from "./item";
 import { itemsDomAll, notesDomAdd, notesDomAll, itemsDomAdd } from "./itemsDom";
 import { clearDomItems } from "./itemsDom";
 import Note from "./note";
+import Background from './background.jpg'
+
+const myBackground = new Image();
+myBackground.src = Background;
+
 
 const projects = [];
 const makeover = new Project("Makeover");
@@ -88,7 +93,7 @@ formNote.addEventListener("submit", (e) => {
 
 function addProjectNew() {
   const newProjectBox = document.querySelector(".project-new-box");
-  newProjectBox.style.visibility = "visible";
+  newProjectBox.style.display = "block";
 
   const newProjectCancelButton = document.querySelector("#cancelProject");
   newProjectCancelButton.addEventListener("click", function () {
@@ -112,7 +117,7 @@ formProject.addEventListener("submit", (e) => {
 
 function addNewItem() {
   const newItemBox = document.querySelector(".item-new-box");
-  newItemBox.style.visibility = "visible";
+  newItemBox.style.display = "block";
 
   const newItemCancelButton = document.querySelector("#cancelItem");
   newItemCancelButton.addEventListener("click", function () {
@@ -139,10 +144,10 @@ function closeForm() {
   newNoteBox.style.display = "none";
 
   const newProjectBox = document.querySelector(".project-new-box");
-  newProjectBox.style.visibility = "hidden";
+  newProjectBox.style.display = "none";
 
   const newItemBox = document.querySelector(".item-new-box");
-  newItemBox.style.visibility = "hidden";
+  newItemBox.style.display = "none";
 }
 
 

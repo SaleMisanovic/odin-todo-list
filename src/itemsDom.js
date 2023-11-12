@@ -48,7 +48,7 @@ const itemsDomAdd = () =>{
 
     const itemNewButton = document.createElement("button");
     itemNew.appendChild(itemNewButton);
-    itemNewButton.innerText = "Add New Item";
+    itemNewButton.innerText = "+ Add New Item";
     itemNewButton.addEventListener("click", function () {
         addNewItem();
     })
@@ -77,7 +77,7 @@ const notesDomAdd = () =>{
 
     const noteNewButton = document.createElement("button");
     noteNew.appendChild(noteNewButton);
-    noteNewButton.innerText = "Add New Note";
+    noteNewButton.innerText = "+ Add New Note";
     noteNewButton.addEventListener("click",function () {
         addNewNote();
     })

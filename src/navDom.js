@@ -37,7 +37,7 @@ const navDomProjectNew = ()=>{
 
   const navProjecNewButton = document.createElement("a");
   navProjectNew.appendChild(navProjecNewButton);
-  navProjecNewButton.innerText = "Add New Project +";
+  navProjecNewButton.innerText = "+ New Project";
   navProjecNewButton.classList.add("project");
   navProjecNewButton.addEventListener("click",function () {
     addProjectNew();

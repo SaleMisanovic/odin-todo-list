@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-        <h1>TO - DO</h1>
+        <h1>#TO-DO</h1>
     </header>
     <main>
         <nav>
@@ -20,39 +20,45 @@
     </main>
     <div class="pop-ups">
         <div class="note-new-box">
-            <h3>Add new Note</h3>
-            <form id="formNote">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-                <label for="description">Description</label>
-                <input type="text" id="description" name="description">
-                <button type="submit" id="submitNote">Create</button>
-                <button type="button" id="cancelNote">Cancel</button>
-            </form>
+            <div class="wrapper">
+                <h3>Add new Note</h3>
+                <form id="formNote">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="description">Description</label>
+                    <input type="text" id="description" name="description">
+                    <button type="submit" id="submitNote">Create</button>
+                    <button type="button" id="cancelNote">Cancel</button>
+                </form>
+            </div>
         </div>
         <div class="project-new-box">
+            <div class="wrapper">
             <h3>Add new Project</h3>
             <form id="formProject">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="nameProject">
+                <input type="text" name="name" id="nameProject" required>
                 <button type="submit" id="submitProject">Create</button>
                 <button type="button" id="cancelProject">Cancel</button>
             </form>
         </div>
+        </div>
         <div class="item-new-box">
+            <div class="wrapper">
             <h3>Add new Item</h3>
             <form id="formItem">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="nameItem">
+                <input type="text" name="name" id="nameItem" required>
                 <label for="description">Description</label>
                 <input type="text" name="description" id="descriptionItem">
                 <label for="dueDate">Due Date</label>
                 <input type="text" name="dueDate" id="dueDate">
                 <label for="priority">Priority</label>
-                <input type="text" name="priority" id="priority">
+                <input type="text" name="priority" id="priority" required>
                 <button type="submit" id="submitItem">Create</button>
                 <button type="button" id="cancelItem">Cancel</button>
             </form>
+            </div>
         </div>
     </div>
     <footer>
