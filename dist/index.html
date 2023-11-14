@@ -54,7 +54,12 @@
                 <label for="dueDate">Due Date</label>
                 <input type="text" name="dueDate" id="dueDate">
                 <label for="priority">Priority</label>
-                <input type="text" name="priority" id="priority" required>
+                <select name="priority" id="priority" required>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+                <!-- <input type="text" name="priority" id="priority" required> -->
                 <button type="submit" id="submitItem">Create</button>
                 <button type="button" id="cancelItem">Cancel</button>
             </form>

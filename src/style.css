@@ -52,13 +52,28 @@ a{
 
 .project-item{
     display: grid;
-    grid-template-columns: 2fr 3fr 2fr 1fr 1fr;
+    grid-template-columns: 3fr 4fr 3fr 2fr 1fr;
     border-bottom: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
 }
 .note-item{
     display: grid;
     grid-template-columns: 1fr 1fr;
     border-bottom: 1px solid black;
+}
+
+.project-item>button{
+    background: url('./delete.png');
+    background-size:cover;
+    height: 19px;
+    width: 19px;
+    border: none;
+}
+
+.project-item>button:hover{
+transform: scale(1.1);
+cursor: pointer;
 }
 
 .item-new>button{
@@ -75,13 +90,25 @@ a{
     cursor: pointer;
 }
 
+.High{
+    background-color: #ff6666;
+}
+
+.Medium{
+    background-color: #ffad99;
+}
+
+.Low{
+    background-color: #66cc99;
+}
+
 footer{
+    background-color: #ffffff;
     border-bottom-left-radius: 5px; 
     border-bottom-right-radius: 5px; 
 }
 
 footer>p{
-    background-color: #ffffff;
     margin:0 ;
     text-align: center;
 }
@@ -114,4 +141,8 @@ footer>p{
     padding: 30px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px 0px rgba(#000000, 0.4);
+}
+
+.opacity{
+    opacity: 0.5;
 }

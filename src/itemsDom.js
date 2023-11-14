@@ -1,4 +1,4 @@
-import {addNewItem, addNewNote, changeStatus} from "./index.js"
+import {addNewItem, addNewNote, changeStatus, deleteItem} from "./index.js"
 
 const content = document.querySelector(".content");
 
@@ -11,7 +11,8 @@ const itemsDomAll = (item) =>{
 
     const projectItem = document.createElement("div");
     content.appendChild(projectItem);
-    projectItem.classList.add("project-item") 
+    projectItem.classList.add("project-item");
+    projectItem.classList.add(item.priority);  
 
     const projectItemName = document.createElement("div");
     projectItemName.innerText = `${item.name}`;
@@ -25,18 +26,25 @@ const itemsDomAll = (item) =>{
     projectItemDueDate.innerText = `${item.dueDate}` ;
     projectItem.appendChild(projectItemDueDate);
 
-    const projectItemPriority = document.createElement("div");
-    projectItemPriority.innerText = `${item.priority}` ;
-    projectItem.appendChild(projectItemPriority);
-
     const projectItemChecked = document.createElement("input");
     projectItemChecked.type = "checkbox";
     projectItemChecked.checked = item.checked;
     projectItemChecked.addEventListener("click",function() {
         changeStatus(item);
     })
+    if (item.checked == true) {
+        projectItem.classList.add("opacity")
+      }
 
     projectItem.appendChild(projectItemChecked);
+
+    const projectItemDelete = document.createElement("button");
+    //projectItemDelete.innerText = "Delete";
+    projectItemDelete.addEventListener("click",function () {
+        deleteItem(item);
+    })
+
+    projectItem.appendChild(projectItemDelete)
 
 
 };

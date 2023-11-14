@@ -8,9 +8,13 @@ import { itemsDomAll, notesDomAdd, notesDomAll, itemsDomAdd } from "./itemsDom";
 import { clearDomItems } from "./itemsDom";
 import Note from "./note";
 import Background from './background.jpg'
+import Delete from './delete.png'
 
 const myBackground = new Image();
 myBackground.src = Background;
+
+const myDelete = new Image();
+myDelete.src = Delete;
 
 
 const projects = [];
@@ -61,12 +65,18 @@ notes.push(book);
 
 function changeStatus(item) {
   item.checked = !item.checked;
+  renderItems(openProject);
+  console.log(openProject);
 }
 
-let openProject = "";
+function deleteItem(item) {
+  items.splice(items.indexOf(item),1);
+  renderItems(openProject);
+  console.log(openProject)
+}
 
-// instead of visibilty add display ? see: odin library
-//move dom elements
+let openProject = "home";
+
 //prevent duplicate projects
 function addNewNote() {
   const newNoteBox = document.querySelector(".note-new-box");
@@ -154,17 +164,19 @@ function closeForm() {
 function renderItems(value) {
   clearDomItems();
   if (value === "home") {
+    openProject = value;
     items.forEach((item) => {
       itemsDomAll(item);
     });
   } else if (value === "notes") {
+    openProject = value;
     notes.forEach((note) => {
       notesDomAll(note);
     });
     notesDomAdd();
   } else if (value !== "home") {
-    let newValue = value;
-    value = newValue;
+    //let newValue = value;
+    //value = newValue;
     openProject = value;
     let results = items.filter(function (el) {
       return el.project == value;
@@ -183,3 +195,4 @@ export {addNewItem};
 export {addProjectNew};
 export { closeForm };
 export {changeStatus};
+export {deleteItem}
