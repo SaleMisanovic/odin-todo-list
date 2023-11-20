@@ -23,10 +23,14 @@
             <div class="wrapper">
                 <h3>Add new Note</h3>
                 <form id="formNote">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                    <label for="description">Description</label>
-                    <input type="text" id="description" name="description">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div>
+                        <label for="description">Description</label>
+                        <input type="text" id="description" name="description">
+                    </div>
                     <button type="submit" id="submitNote">Create</button>
                     <button type="button" id="cancelNote">Cancel</button>
                 </form>
@@ -36,8 +40,10 @@
             <div class="wrapper">
             <h3>Add new Project</h3>
             <form id="formProject">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="nameProject" required>
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="nameProject" required>
+                </div>
                 <button type="submit" id="submitProject">Create</button>
                 <button type="button" id="cancelProject">Cancel</button>
             </form>
@@ -47,19 +53,27 @@
             <div class="wrapper">
             <h3>Add new Item</h3>
             <form id="formItem">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="nameItem" required>
-                <label for="description">Description</label>
-                <input type="text" name="description" id="descriptionItem">
-                <label for="dueDate">Due Date</label>
-                <input type="text" name="dueDate" id="dueDate">
-                <label for="priority">Priority</label>
-                <select name="priority" id="priority" required>
-                    <option value="High">High</option>
-                    <option value="Medium">Medium</option>
-                    <option value="Low">Low</option>
-                </select>
-                <!-- <input type="text" name="priority" id="priority" required> -->
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" name="name" id="nameItem" required>
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" id="descriptionItem">
+                </div>
+                <div>
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" name="dueDate" id="dueDate">
+                </div>
+                <div>
+                    <label for="priority">Priority:</label>
+                    <select name="priority" id="priority" required>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                    <!-- <input type="text" name="priority" id="priority" required> -->
+                </div>
                 <button type="submit" id="submitItem">Create</button>
                 <button type="button" id="cancelItem">Cancel</button>
             </form>

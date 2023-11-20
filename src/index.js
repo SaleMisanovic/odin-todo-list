@@ -4,7 +4,7 @@ import { navDom } from "./navDom";
 import { navDomProjects, navDomProjectNew } from "./navDom";
 import { navDomNotes } from "./navDom";
 import Item from "./item";
-import { itemsDomAll, notesDomAdd, notesDomAll, itemsDomAdd } from "./itemsDom";
+import { itemsDomAll, notesDomAdd, notesDomAll, itemsDomAdd, itemsDomProjectRemove } from "./itemsDom";
 import { clearDomItems } from "./itemsDom";
 import Note from "./note";
 import Background from './background.jpg'
@@ -77,7 +77,8 @@ function deleteItem(item) {
 
 let openProject = "home";
 
-//prevent duplicate projects
+//add local storage
+
 function addNewNote() {
   const newNoteBox = document.querySelector(".note-new-box");
   newNoteBox.style.display = "block";
@@ -119,7 +120,20 @@ formProject.addEventListener("submit", (e) => {
 
   const formDataObj = Object.fromEntries(myFormData.entries());
   const newProject = new Project(formDataObj.name);
-  projects.push(newProject);
+
+  let projectExists = false;
+  for (let i = 0; i < projects.length; i++) {
+    if(projects[i].name===newProject.name){
+      alert("Project name already exists!")
+      projectExists = true;
+      break
+    }
+  }
+  if (!projectExists) {
+    projects.push(newProject)
+  }
+
+
   console.log(projects);
   renderNav();
   closeForm();
@@ -133,6 +147,23 @@ function addNewItem() {
   newItemCancelButton.addEventListener("click", function () {
     closeForm();
   });
+}
+
+function deleteProject() {
+  //delete items related to project
+  let itemsToDelete = items.filter(function (el){
+    return el.project === openProject;
+  });
+  itemsToDelete.forEach((item) => {
+    deleteItem(item);
+  })
+//delete project
+  const index = projects.findIndex((i=>{
+    return i.name=== openProject;
+  }))
+  projects.splice(index,1);
+  renderNav();
+  renderItems("home") 
 }
 
 const formItem = document.getElementById("formItem");
@@ -185,11 +216,13 @@ function renderItems(value) {
       itemsDomAll(item);
     });
     itemsDomAdd();
+    itemsDomProjectRemove();
   }
 }
 renderItems("home");
 
 export { renderItems };
+export {deleteProject};
 export { addNewNote };
 export {addNewItem};
 export {addProjectNew};

@@ -1,4 +1,4 @@
-import {addNewItem, addNewNote, changeStatus, deleteItem} from "./index.js"
+import {addNewItem, addNewNote, changeStatus, deleteItem,deleteProject} from "./index.js"
 
 const content = document.querySelector(".content");
 
@@ -35,7 +35,6 @@ const itemsDomAll = (item) =>{
     if (item.checked == true) {
         projectItem.classList.add("opacity")
       }
-
     projectItem.appendChild(projectItemChecked);
 
     const projectItemDelete = document.createElement("button");
@@ -43,7 +42,6 @@ const itemsDomAll = (item) =>{
     projectItemDelete.addEventListener("click",function () {
         deleteItem(item);
     })
-
     projectItem.appendChild(projectItemDelete)
 
 
@@ -62,6 +60,19 @@ const itemsDomAdd = () =>{
     })
 }
 
+const itemsDomProjectRemove = () =>{
+    const projectDelete = document.createElement("div");
+    content.appendChild(projectDelete);
+    projectDelete.classList.add("item-new");
+
+    const itemDeleteButton = document.createElement("button");
+    projectDelete.appendChild(itemDeleteButton);
+    itemDeleteButton.innerText = "- Delete Project";
+    itemDeleteButton.addEventListener("click", function () {
+        deleteProject();
+    })
+}
+
 const notesDomAll = (note) =>{
 
     const noteItem = document.createElement("div");
@@ -75,6 +86,13 @@ const notesDomAll = (note) =>{
     const noteItemDesc = document.createElement("div");
     noteItemDesc.innerText = `${note.description}`;
     noteItem.appendChild(noteItemDesc);
+
+    const noteItemDelete = document.createElement("button");
+    //noteItemDelete.innerText = "Delete";
+    noteItemDelete.addEventListener("click",function () {
+        deleteItem(note);
+    })
+    noteItem.appendChild(noteItemDelete)
 
 };
 
@@ -92,6 +110,7 @@ const notesDomAdd = () =>{
 }
 
 export {itemsDomAdd};
+export {itemsDomProjectRemove};
 export {notesDomAdd};
 export {notesDomAll};
 export {itemsDomAll};

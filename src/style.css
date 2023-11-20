@@ -59,11 +59,13 @@ a{
 }
 .note-item{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 3fr 1fr;
     border-bottom: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
 }
 
-.project-item>button{
+.project-item>button, .note-item>button{
     background: url('./delete.png');
     background-size:cover;
     height: 19px;
@@ -71,7 +73,7 @@ a{
     border: none;
 }
 
-.project-item>button:hover{
+.project-item>button:hover, .note-item>button:hover{
 transform: scale(1.1);
 cursor: pointer;
 }
@@ -129,6 +131,7 @@ footer>p{
 	width: 100%;
 	left: 0;
 	top: 0;
+    
 }
 .wrapper{
     max-width: 600px; 
@@ -141,7 +144,41 @@ footer>p{
     padding: 30px;
     border-radius: 10px;
     box-shadow: 2px 2px 10px 0px rgba(#000000, 0.4);
+    display: flex;
+    flex-wrap: wrap;
 }
+.wrapper>h3{
+    text-align: center;
+    width: 100%;
+    margin-top: 0px;
+}
+.wrapper>form{
+    width: 100%;
+}
+label{
+    width: 80px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+input{
+    width: 300px;
+    border: solid 1px black;
+}
+select{
+    border: solid 1px black;
+}
+form>div{
+    display: flex;
+}
+
+form>button{
+    width: 30%;
+}
+
 
 .opacity{
     opacity: 0.5;
