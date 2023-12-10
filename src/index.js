@@ -18,12 +18,7 @@ myDelete.src = Delete;
 
 
 const projects = [];
-const makeover = new Project("Makeover");
-projects.push(makeover);
-const hunting = new Project("Hunting");
-projects.push(hunting);
-const housework = new Project("Housework");
-projects.push(housework);
+populateDataFromLocalStorage('projectsKey',projects);
 
 function renderNav() {
   navDom();
@@ -36,41 +31,21 @@ function renderNav() {
 renderNav();
 
 const items = [];
-const gun = new Item(
-  "Berreta",
-  "Buy a Berreta from Steve",
-  "22.4.2024",
-  "High",
-  "Hunting",
-   false
-);
-items.push(gun);
-const dog = new Item("Dog", "Train the dog", "12.5.2024", "Medium", "Hunting", true);
-items.push(dog);
-const paint = new Item(
-  "Paint",
-  "Paint the room",
-  "12.4.2024",
-  "Medium",
-  "Housework",
-  true
-);
-items.push(paint);
+populateDataFromLocalStorage('itemsKey',items);
 
 const notes = [];
-const shirt = new Note("Iron", "Iron the new shirt");
-notes.push(shirt);
-const book = new Note("Book", "Read the book");
-notes.push(book);
+populateDataFromLocalStorage('notesKey',notes);
 
 function changeStatus(item) {
   item.checked = !item.checked;
+  saveDataToLocalStorage(items, 'itemsKey');
   renderItems(openProject);
   console.log(openProject);
 }
 
 function deleteItem(item) {
   items.splice(items.indexOf(item),1);
+  saveDataToLocalStorage(items, 'itemsKey');
   renderItems(openProject);
   console.log(openProject)
 }
@@ -78,6 +53,30 @@ function deleteItem(item) {
 let openProject = "home";
 
 //add local storage
+function saveDataToLocalStorage(dataArray,key) {
+  if (typeof Storage !== 'undefined') {
+    localStorage.setItem(key,JSON.stringify(dataArray));
+  }else{
+    alert("Sorry,local storage not supported")
+  }
+}
+function populateDataFromLocalStorage(key,targetArray) {
+  if (typeof Storage !=='undefined') {
+    const storedData = localStorage.getItem(key);
+
+    if(storedData){
+      const parsedData = JSON.parse(storedData);
+      targetArray.length = 0;
+
+      parsedData.forEach(item=>{
+        targetArray.push(item);
+      });
+    }
+  }else{
+    alert("Sorry,local storage not supported")
+  }
+}
+
 
 function addNewNote() {
   const newNoteBox = document.querySelector(".note-new-box");
@@ -98,6 +97,7 @@ formNote.addEventListener("submit", (e) => {
   const formDataObj = Object.fromEntries(myFormData.entries());
   const newNote = new Note(formDataObj.name, formDataObj.description);
   notes.push(newNote);
+  saveDataToLocalStorage(notes, 'notesKey');
   renderItems("notes");
   closeForm();
 });
@@ -132,6 +132,7 @@ formProject.addEventListener("submit", (e) => {
   if (!projectExists) {
     projects.push(newProject)
   }
+  saveDataToLocalStorage(projects, 'projectsKey');
 
 
   console.log(projects);
@@ -162,6 +163,7 @@ function deleteProject() {
     return i.name=== openProject;
   }))
   projects.splice(index,1);
+  saveDataToLocalStorage(projects, 'projectsKey');
   renderNav();
   renderItems("home") 
 }
@@ -176,9 +178,11 @@ formItem.addEventListener("submit", (e) => {
 
   const newItem = new Item(formDataObj.name, formDataObj.description, formDataObj.dueDate, formDataObj.priority, openProject );
   items.push(newItem);
+  saveDataToLocalStorage(items, 'itemsKey');
   renderItems(openProject.toString());
   closeForm();
 });
+
 
 function closeForm() {
   const newNoteBox = document.querySelector(".note-new-box");
